@@ -17,4 +17,4 @@ sudo nixos-rebuild switch --flake path:/home/skrimix/.nix
 gen=$(nixos-rebuild list-generations --flake path:/home/skrimix/.nix | grep current | awk '{print $1}')
 git add -A
 git commit -am "generation $gen"
-git push
+git push > /dev/null && echo "Pushed to git"
