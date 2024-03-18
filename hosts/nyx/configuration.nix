@@ -412,7 +412,6 @@
     direnv.enable = true;
   };
 
-
   security.polkit = {
     enable = true;
     extraConfig = ''
