@@ -12,6 +12,7 @@
       specialArgs = { inherit self system inputs; };
       modules = [
         ./packages
+        ./modules/greeter.nix
         ./modules/nix-alien.nix
         ./modules/sunshine.nix
         ./modules/kb-switch.nix
