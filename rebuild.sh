@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-pushd "$(dirname "$0")" > /dev/null
+cd "$(dirname "$0")"
 
 _echo() {
     echo -e "\e[1;1m$1\e[0m"
@@ -30,5 +30,3 @@ gen=$(nixos-rebuild list-generations --flake path:/home/skrimix/.nix | grep curr
 git add -A
 git commit -am "generation $gen"
 git push --quiet && _echo "Pushed to git"
-
-popd
