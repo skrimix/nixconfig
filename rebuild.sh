@@ -16,7 +16,7 @@ _echo_fail() {
 
 # check for changes and --no-git flag
 if [ -z "$(git status --porcelain)" ] || [ "$1" == "--no-git" ]; then
-    _echo "No changes to commit or no-git flag used."
+    _echo "No changes to commit or no-git flag used"
     _echo "Rebuilding NixOS..."
     (sudo nixos-rebuild switch --flake path:/home/skrimix/.nix && _echo_success "Rebuild successful") || (_echo_fail "Rebuild failed" && exit 1)
     exit 0
@@ -30,3 +30,5 @@ gen=$(nixos-rebuild list-generations --flake path:/home/skrimix/.nix | grep curr
 git add -A
 git commit -am "generation $gen"
 git push --quiet && _echo "Pushed to git"
+
+popd
