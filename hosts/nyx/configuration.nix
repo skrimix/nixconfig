@@ -96,7 +96,6 @@
 
   hardware = {
     enableRedistributableFirmware = true;
-    rasdaemon.enable = true;
     opengl.driSupport32Bit = true;
 
     bluetooth = {
@@ -170,10 +169,18 @@
     kmscon.hwRender = true;
 
     # SDDM + Plasms 6
-    #xserver.enable = true;
-    #xserver.displayManager.sddm.enable = true;
-    #xserver.displayManager.sddm.autoNumlock = true;
-    #xserver.displayManager.defaultSession = "plasma";
+    xserver.enable = true;
+    xserver.displayManager.sddm = {
+      enable = true;
+      autoNumlock = true;
+      settings = {
+          Autologin = {
+          Session = "plasma.desktop";
+          User = "skrimix";
+        };
+      };
+    };
+    xserver.displayManager.defaultSession = "plasma";
     desktopManager.plasma6.enable = true;
 
     zerotierone.enable = true;
