@@ -36,6 +36,8 @@ in
     kernelParams = [
       # Display overclock
       "video=HDMI-A-1:1920x1080@75"
+      # Set mode early
+      "video=DP-2:2560x1440@75"
       # zram is used instead of zswap
       "zswap.enabled=0"
       # Unlock AMDGPU controls
