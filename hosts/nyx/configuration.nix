@@ -170,10 +170,11 @@
     kmscon.hwRender = true;
 
     # SDDM + Plasms 6
-    xserver.enable = true;
-    xserver.displayManager.sddm.enable = true;
-    xserver.displayManager.sddm.autoNumlock = true;
-    xserver.displayManager.defaultSession = "plasma";
+    #xserver.enable = true;
+    #xserver.displayManager.sddm.enable = true;
+    #xserver.displayManager.sddm.autoNumlock = true;
+    #xserver.displayManager.defaultSession = "plasma";
+    greetd.enable = true;
     desktopManager.plasma6.enable = true;
 
     zerotierone.enable = true;
@@ -410,6 +411,9 @@
     ];
     virt-manager.enable = true;
     direnv.enable = true;
+    regreet = {
+      enable = true;
+    };
   };
 
   security.polkit = {
