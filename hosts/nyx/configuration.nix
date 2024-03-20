@@ -40,8 +40,12 @@
     tmp.cleanOnBoot = true;
     supportedFilesystems = [ "ntfs" ];
     loader = {
+      timeout = 0;
       efi.canTouchEfiVariables = true;
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        editor = false;
+      };
     };
 
     kernelModules = [ "tcp_bbr" "i2c-dev" ];
@@ -179,6 +183,7 @@
           User = "skrimix";
         };
       };
+      wayland.enable = true;
     };
     xserver.displayManager.defaultSession = "plasma";
     desktopManager.plasma6.enable = true;
