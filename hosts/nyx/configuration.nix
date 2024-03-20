@@ -339,6 +339,9 @@
     winetricks
     goverlay
     heroic
+    (heroic.overrideAttrs (previousAttrs: { postInstall = (previousAttrs.postInstall or "") + ''
+    substituteInPlace "$out/share/heroic/flatpak/com.heroicgameslauncher.hgl.desktop" --replace 'Exec=' 'Exec=http_proxy="" https_proxy=""'
+    ''; }))
 
     # Hardware monitoring
     (conky.override { waylandSupport = true; })
