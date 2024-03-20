@@ -338,6 +338,7 @@
     wineWowPackages.waylandFull
     winetricks
     goverlay
+    heroic
 
     # Hardware monitoring
     (conky.override { waylandSupport = true; })
