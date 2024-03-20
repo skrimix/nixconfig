@@ -422,6 +422,10 @@
     ];
     virt-manager.enable = true;
     direnv.enable = true;
+    gamemode = {
+      enable = true;
+      enableRenice = true;
+    };
   };
 
   security.polkit = {
