@@ -23,7 +23,7 @@ if [ -z "$(git status --porcelain)" ] || [ "$1" == "--no-git" ]; then
 fi
 
 
-git diff --color -U0
+git diff --color -U0 \*.nix
 _echo "Rebuilding NixOS..."
 (sudo nixos-rebuild switch --flake path:/home/skrimix/.nix && _echo_success "Rebuild successful, committing to git") || (_echo_fail "Rebuild failed" && exit 1)
 gen=$(nixos-rebuild list-generations --flake path:/home/skrimix/.nix | grep current | awk '{print $1}')

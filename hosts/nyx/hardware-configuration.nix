@@ -34,10 +34,11 @@ in
     blacklistedKernelModules = [ "k10temp" ];
     extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
     kernelParams = [
-      # Display overclock
-      "video=HDMI-A-1:1920x1080@75"
-      # Set mode early
+      "quiet"
+      # Set mode early on the main display
       "video=DP-2:2560x1440@75"
+      # Overclock secondary display
+      "video=HDMI-A-1:1920x1080@75"
       # zram is used instead of zswap
       "zswap.enabled=0"
       # Unlock AMDGPU controls
