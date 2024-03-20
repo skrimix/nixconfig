@@ -47,10 +47,6 @@
         editor = false;
       };
     };
-    plymouth = {
-      enable = true;
-      #theme = "breeze";
-    };
 
     kernelModules = [ "tcp_bbr" "i2c-dev" ];
     kernel.sysctl = {

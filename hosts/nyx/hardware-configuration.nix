@@ -34,7 +34,6 @@ in
     blacklistedKernelModules = [ "k10temp" ];
     extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
     kernelParams = [
-      "quiet"
       # Set mode early on the main display
       "video=DP-2:2560x1440@75"
       # Overclock secondary display
