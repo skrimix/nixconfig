@@ -286,6 +286,7 @@
     usbutils # lsusb
     libsForQt5.kio # Needed for file picker in some apps (e.g. Monero GUI)
     wl-clipboard # For WayDroid clipboard sharing
+    pulseaudio # pactl
 
     # Media
     spotify
