@@ -15,6 +15,7 @@
         ./modules/nix-alien.nix
         ./modules/sunshine.nix
         ./modules/kb-switch.nix
+        ./modules/lact.nix
         ./hosts/nyx/configuration.nix
       ];
     };
