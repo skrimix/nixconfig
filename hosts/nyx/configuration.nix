@@ -426,6 +426,7 @@
       enable = true;
       enableRenice = true;
     };
+    noisetorch.enable = true;
   };
 
   security.polkit = {
