@@ -47,6 +47,10 @@
         editor = false;
       };
     };
+    plymouth = {
+      enable = true;
+      theme = "breeze";
+    };
 
     kernelModules = [ "tcp_bbr" "i2c-dev" ];
     kernel.sysctl = {
@@ -178,7 +182,7 @@
       enable = true;
       autoNumlock = true;
       settings = {
-          Autologin = {
+        Autologin = {
           Session = "plasma.desktop";
           User = "skrimix";
         };
