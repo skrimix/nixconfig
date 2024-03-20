@@ -284,6 +284,8 @@
     any-nix-shell # keep zsh in nix-shell
     libnotify # notify-send
     usbutils # lsusb
+    libsForQt5.kio # Needed for file picker in some apps (e.g. Monero GUI)
+    wl-clipboard # For WayDroid clipboard sharing
 
     # Media
     spotify
@@ -334,16 +336,11 @@
     protonup-qt
     wineWowPackages.waylandFull
     winetricks
+    goverlay
 
     # Hardware monitoring
     (conky.override { waylandSupport = true; })
     lm_sensors
-
-    # Needed for file picker in some apps (e.g. Monero GUI)
-    libsForQt5.kio
-
-    # For WayDroid clipboard sharing
-    wl-clipboard
 
     # AMD GPU
     lact
