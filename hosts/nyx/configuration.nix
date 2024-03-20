@@ -49,7 +49,7 @@
     };
     plymouth = {
       enable = true;
-      theme = "breeze";
+      #theme = "breeze";
     };
 
     kernelModules = [ "tcp_bbr" "i2c-dev" ];
