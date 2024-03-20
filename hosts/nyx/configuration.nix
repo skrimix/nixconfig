@@ -287,6 +287,7 @@
     libsForQt5.kio # Needed for file picker in some apps (e.g. Monero GUI)
     wl-clipboard # For WayDroid clipboard sharing
     pulseaudio # pactl
+    vesktop # Discord
 
     # Media
     spotify
@@ -338,9 +339,7 @@
     wineWowPackages.waylandFull
     winetricks
     goverlay
-    (heroic.overrideAttrs (previousAttrs: { postInstall = (previousAttrs.postInstall or "") + ''
-    substituteInPlace "$out/share/heroic/flatpak/com.heroicgameslauncher.hgl.desktop" --replace 'Exec=' 'Exec=http_proxy="" https_proxy=""'
-    ''; }))
+    heroic
 
     # Hardware monitoring
     (conky.override { waylandSupport = true; })
