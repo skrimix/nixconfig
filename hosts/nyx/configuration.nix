@@ -134,14 +134,7 @@
       DefaultTimeoutStopSec=20s
     '';
 
-    # Use systemd units from packages
-    packages = with pkgs; [
-      lact
-    ];
-    # Enable provided services
-    # (WantedBy= from upstream units not respected)
-    services.lactd.wantedBy = [ "graphical.target" ];
-
+    # Disable service
     services.ollama.wantedBy = lib.mkForce [ ];
 
     user.services."conky" = {
@@ -346,7 +339,7 @@
     lm_sensors
 
     # AMD GPU
-    lact
+    #lact (installed by lact.nix module)
     nvtop-amd
     amdgpu_top
 
