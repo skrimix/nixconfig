@@ -282,7 +282,7 @@
     pulseaudio # pactl
     vesktop # Discord
     ((nnn.override { withNerdIcons = true; }).overrideAttrs (finalAttrs: previousAttrs: {
-      hardeningDisable = [ "fortify" ]; 
+      hardeningDisable = [ "fortify3" ]; 
     }))
 
     # Media
