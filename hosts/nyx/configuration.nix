@@ -19,7 +19,7 @@
 
     gc = {
       automatic = true;
-      dates = "weekly";
+      dates = "daily";
       options = "--delete-older-than 14d";
     };
   };
@@ -281,6 +281,7 @@
     wl-clipboard # For WayDroid clipboard sharing
     pulseaudio # pactl
     vesktop # Discord
+    nnn
 
     # Media
     spotify
