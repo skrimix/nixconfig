@@ -298,6 +298,7 @@
     vlc
     gimp
     upscayl
+    duplicacy
 
     # Browsers
     brave
