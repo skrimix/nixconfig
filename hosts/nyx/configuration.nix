@@ -281,7 +281,9 @@
     wl-clipboard # For WayDroid clipboard sharing
     pulseaudio # pactl
     vesktop # Discord
-    nnn
+    ((nnn.override { withNerdIcons = true; }).overrideAttrs (finalAttrs: previousAttrs: {
+      hardeningDisable = [ "fortify" ]; 
+    }))
 
     # Media
     spotify
