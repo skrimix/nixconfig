@@ -28,7 +28,7 @@
   system.autoUpgrade = {
     enable = true;
     randomizedDelaySec = "30min";
-    flake = inputs.self.outPath;
+    flake = "path:${inputs.self.outPath}";
     flags = [
       "-L" # print build logs
     ];
