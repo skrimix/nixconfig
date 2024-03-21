@@ -330,12 +330,13 @@
     feather
 
     # Gaming
+    wineWowPackages.waylandFull
+    winetricks
+    bottles
     mangohud
     protontricks
     lutris
     protonup-qt
-    wineWowPackages.waylandFull
-    winetricks
     goverlay
     heroic
 
