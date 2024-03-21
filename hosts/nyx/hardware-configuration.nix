@@ -29,7 +29,13 @@ in
       availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
       kernelModules = [ ];
     };
-    kernelModules = [ "kvm-amd" "zenpower" ];
+    kernelModules = [
+      "kvm-amd"
+      # Alternative Ryzen CPU metrics
+      "zenpower"
+      # Motherboard sensors
+      "nct6775"
+    ];
     # zenpower replaces k10temp
     blacklistedKernelModules = [ "k10temp" ];
     extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
