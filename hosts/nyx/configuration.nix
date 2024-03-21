@@ -283,7 +283,7 @@
     vesktop # Discord
     ((nnn.override { withNerdIcons = true; }).overrideAttrs (finalAttrs: previousAttrs: {
       # "Buffer overflow detected" crash
-      hardeningDisable = [ "fortify3" ]; 
+      hardeningDisable = [ "fortify3" ];
     }))
 
     # Media

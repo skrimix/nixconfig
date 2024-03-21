@@ -1,14 +1,14 @@
-{
-  stdenv,
-  fetchzip,
-  makeDesktopItem,
-  autoPatchelfHook,
-  copyDesktopItems,
-  qtbase,
-  qtsvg,
-  qttools,
-  qtx11extras,
-  wrapQtAppsHook,
+{ stdenv
+, fetchzip
+, makeDesktopItem
+, autoPatchelfHook
+, copyDesktopItems
+, qtbase
+, qtsvg
+, qttools
+, qtx11extras
+, wrapQtAppsHook
+,
 }:
 stdenv.mkDerivation rec {
   pname = "nekoray";
@@ -27,13 +27,13 @@ stdenv.mkDerivation rec {
       exec = "nekoray";
       icon = "nekoray";
       comment = "Qt based cross-platform GUI proxy configuration manager";
-      categories = ["Network" "Utility"];
+      categories = [ "Network" "Utility" ];
     })
   ];
 
   dontWrapQtApps = true;
 
-  nativeBuildInputs = [autoPatchelfHook copyDesktopItems wrapQtAppsHook];
+  nativeBuildInputs = [ autoPatchelfHook copyDesktopItems wrapQtAppsHook ];
   buildInputs = [
     qtbase
     qtsvg
