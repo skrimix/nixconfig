@@ -282,6 +282,7 @@
     pulseaudio # pactl
     vesktop # Discord
     ((nnn.override { withNerdIcons = true; }).overrideAttrs (finalAttrs: previousAttrs: {
+      # "Buffer overflow detected" crash
       hardeningDisable = [ "fortify3" ]; 
     }))
 
@@ -423,6 +424,7 @@
       enableRenice = true;
     };
     noisetorch.enable = true;
+    coolercontrol.enable = true;
   };
 
   security.polkit = {
