@@ -31,6 +31,9 @@
     flake = "path:${inputs.self.outPath}";
     flags = [
       "-L" # print build logs
+      "--update-input"
+      "nixpkgs"
+      "--commit-lock-file"
     ];
   };
 
@@ -135,7 +138,7 @@
     '';
 
     # Disable service
-    services.ollama.wantedBy = lib.mkForce [ ];
+    #services.ollama.wantedBy = lib.mkForce [ ];
 
     user.services."conky" = {
       description = "Conky daemon";
@@ -216,8 +219,10 @@
       nssmdns4 = true;
     };
     sunshine.enable = true;
-    ollama.enable = true;
-    ollama.acceleration = "rocm";
+    #ollama = {
+    #  enable = true;
+    #  acceleration = "rocm";
+    #};
   };
 
 
