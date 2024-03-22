@@ -28,7 +28,8 @@
   system.autoUpgrade = {
     enable = true;
     randomizedDelaySec = "30min";
-    flake = "path:${inputs.self.outPath}";
+    #flake = "path:${inputs.self.outPath}";
+    flake = "path:/home/skrimix/.nix";
     flags = [
       "-L" # print build logs
       "--update-input"
