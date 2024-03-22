@@ -265,12 +265,10 @@
     telegram-desktop
     neofetch
     fzf
-    thefuck
     zoxide
     tree
     nekoray
     cht-sh
-    #pulseaudio
     mission-center
     jq
     p7zip
@@ -327,7 +325,7 @@
     android-studio
     (jetbrains.plugins.addPlugins jetbrains.rider [ "github-copilot" ])
     imhex
-    jadx
+    #jadx
     ghidra
     #vscode-fhs
     # Drag and drop does not work in Wayland
@@ -356,8 +354,7 @@
     lm_sensors
 
     # AMD GPU
-    #lact (installed by lact.nix module)
-    nvtop-amd
+    nvtopPackages.amd
     amdgpu_top
 
     # Info Center deps
