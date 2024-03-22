@@ -16,9 +16,9 @@ in
     enable = true;
     description = "Keyboard layout switch daemon";
 
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
+    wantedBy = [ "graphical.target" ];
+    wants = [ "graphical.target" ];
+    after = [ "graphical.target" ];
 
     path = with pkgs; [ procps ];
 
