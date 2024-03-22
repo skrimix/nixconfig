@@ -140,6 +140,11 @@
     # Disable service
     #services.ollama.wantedBy = lib.mkForce [ ];
 
+    services.nixos-upgrade.environment = lib.mkForce {
+      http_proxy = "";
+      https_proxy = "";
+    };
+
     user.services."conky" = {
       description = "Conky daemon";
       wantedBy = [ "graphical-session.target" ];
