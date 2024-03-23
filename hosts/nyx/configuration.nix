@@ -318,6 +318,7 @@
 
     # Dev
     (python3.withPackages (python-pkgs: [
+      python-pkgs.pip
       python-pkgs.requests
     ]))
     nixpkgs-fmt
