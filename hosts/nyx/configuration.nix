@@ -148,7 +148,7 @@
 
     user.services."conky" = {
       description = "Conky daemon";
-      wantedBy = [ "graphical-session.target" ];
+      #wantedBy = [ "graphical-session.target" ];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${pkgs.conky}/bin/conky -c /home/skrimix/.config/conky/lean-conky-config/conky.conf";
@@ -324,6 +324,7 @@
     nixpkgs-fmt
     git
     gh
+    github-desktop
     burpsuite
     android-studio
     (jetbrains.plugins.addPlugins jetbrains.rider [ "github-copilot" ])
