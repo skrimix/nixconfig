@@ -24,6 +24,7 @@ pkgs.mkShell rec {
     stdenv.cc.cc
   ] ++ deps);
   NIX_LD = "${pkgs.stdenv.cc.libc_bin}/bin/ld.so";
+  LD_LIBRARY_PATH = NIX_LD_LIBRARY_PATH;
   nativeBuildInputs = [
   ] ++ deps;
 

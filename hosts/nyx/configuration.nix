@@ -318,6 +318,7 @@
 
     # Dev
     python3
+    python311Packages.requests
     nixpkgs-fmt
     git
     gh
