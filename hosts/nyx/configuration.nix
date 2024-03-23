@@ -317,8 +317,9 @@
     (librewolf.override { nativeMessagingHosts = [ kdePackages.plasma-browser-integration ]; })
 
     # Dev
-    python3
-    python311Packages.requests
+    (python3.withPackages (python-pkgs: [
+      python-pkgs.requests
+    ]))
     nixpkgs-fmt
     git
     gh
