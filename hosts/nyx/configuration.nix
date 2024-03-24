@@ -225,10 +225,10 @@
       nssmdns4 = true;
     };
     sunshine.enable = true;
-    #ollama = {
+    # ollama = {
     #  enable = true;
     #  acceleration = "rocm";
-    #};
+    # };
   };
 
 
@@ -260,7 +260,6 @@
     glances
     gparted
     btdu
-    nix-output-monitor
     compsize
     telegram-desktop
     neofetch
