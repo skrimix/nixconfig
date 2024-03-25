@@ -215,22 +215,6 @@
   # Fix Plasma integration in Brave Browser
   environment.etc."chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json".source = "${pkgs.kdePackages.plasma-browser-integration}/etc/chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json";
 
-  services = {
-    printing.enable = true;
-    dbus.enable = true;
-    flatpak.enable = true;
-    #packagekit.enable = true;
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-    };
-    sunshine.enable = true;
-    # ollama = {
-    #  enable = true;
-    #  acceleration = "rocm";
-    # };
-  };
-
 
 
   users = {
@@ -408,11 +392,29 @@
     libvirtd.onBoot = "ignore";
   };
 
+  services = {
+    printing.enable = true;
+    dbus.enable = true;
+    flatpak.enable = true;
+    #packagekit.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+    };
+    sunshine.enable = true;
+    # ollama = {
+    #  enable = true;
+    #  acceleration = "rocm";
+    # };
+  };
+
   programs = {
     dconf.enable = true;
     adb.enable = true;
-    chromium.enable = true;
-    chromium.enablePlasmaBrowserIntegration = true;
+    chromium = {
+      enable = true;
+      enablePlasmaBrowserIntegration = true;
+    };
     _1password.enable = true;
     _1password-gui = {
       enable = true;
@@ -421,15 +423,19 @@
     partition-manager.enable = true;
     kdeconnect.enable = true;
     zsh.enable = true;
-    nix-index.enable = true;
-    nix-index.enableZshIntegration = false;
-    nix-index.enableFishIntegration = false;
-    nix-index.enableBashIntegration = false;
+    nix-index = {
+      enable = true;
+      enableZshIntegration = false;
+      enableFishIntegration = false;
+      enableBashIntegration = false;
+    };
     steam.enable = true;
     ssh.startAgent = true;
-    nix-ld.enable = true;
-    nix-ld.libraries = with pkgs; [
-    ];
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+      ];
+    };
     virt-manager.enable = true;
     direnv.enable = true;
     gamemode = {
