@@ -139,21 +139,43 @@
     '';
 
     # Disable service
-    #services.ollama.wantedBy = lib.mkForce [ ];
+    services.ollama.wantedBy = lib.mkForce [ ];
 
     services.nixos-upgrade.environment = lib.mkForce {
       http_proxy = "";
       https_proxy = "";
     };
 
-    user.services."conky" = {
-      description = "Conky daemon";
-      #wantedBy = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.conky}/bin/conky -c /home/skrimix/.config/conky/lean-conky-config/conky.conf";
+    user.services = {
+      conky = {
+        description = "Conky daemon";
+        #wantedBy = [ "graphical-session.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.conky}/bin/conky -c /home/skrimix/.config/conky/lean-conky-config/conky.conf";
+        };
+        path = [ pkgs.fontconfig pkgs.iproute2 pkgs.util-linux pkgs.wget pkgs.amdgpu_top pkgs.coreutils-full pkgs.python3 ];
       };
-      path = [ pkgs.fontconfig pkgs.iproute2 pkgs.util-linux pkgs.wget pkgs.amdgpu_top pkgs.coreutils-full pkgs.python3 ];
+      fsearch_update_database = {
+        description = "FSearch - Update database";
+        wantedBy = [ "default.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.fsearch}/bin/fsearch --update-database";
+        };
+      };
+    };
+
+    user.timers = {
+      fsearch_update_database = {
+        description = "FSearch - Periodically update database";
+        wantedBy = [ "basic.target" ];
+        timerConfig = {
+          OnBootSec = "10min";
+          OnUnitActiveSec = "30min";
+          Unit = "fsearch_update_database.service";
+        };
+      };
     };
   };
 
@@ -165,44 +187,55 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    #jack.enable = true;
   };
 
 
   services = {
     # Replace kernel console with kmscon
-    kmscon.enable = true;
-    kmscon.hwRender = true;
+    kmscon = {
+      enable = true;
+      hwRender = true;
+    };
 
     # SDDM + Plasms 6
-    xserver.enable = true;
-    xserver.displayManager.sddm = {
+    xserver = {
       enable = true;
-      autoNumlock = true;
-      settings = {
-        Autologin = {
-          Session = "plasma.desktop";
-          User = "skrimix";
+      displayManager = {
+        sddm = {
+          enable = true;
+          autoNumlock = true;
+          settings = {
+            Autologin = {
+              Session = "plasma.desktop";
+              User = "skrimix";
+            };
+          };
+          wayland.enable = true;
         };
+        defaultSession = "plasma";
       };
-      wayland.enable = true;
     };
-    xserver.displayManager.defaultSession = "plasma";
     desktopManager.plasma6.enable = true;
 
-    zerotierone.enable = true;
-    zerotierone.joinNetworks = [ "d5e5fb653733c070" ];
+    zerotierone = {
+      enable = true;
+      joinNetworks = [ "d5e5fb653733c070" ];
+    };
 
     openssh = {
       enable = true;
-      # require public key authentication for better security
       settings.PasswordAuthentication = false;
       settings.KbdInteractiveAuthentication = false;
     };
   };
-  # Enable wayland for programs that support it
-  # Use askpass even in terminal
-  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; SSH_ASKPASS_REQUIRE = "prefer"; };
+
+  environment.sessionVariables = {
+    # Enable wayland for programs that support it
+    NIXOS_OZONE_WL = "1";
+    # Use askpass even in terminal
+    SSH_ASKPASS_REQUIRE = "prefer";
+  };
+
   xdg.portal = {
     enable = true;
 
@@ -214,8 +247,6 @@
 
   # Fix Plasma integration in Brave Browser
   environment.etc."chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json".source = "${pkgs.kdePackages.plasma-browser-integration}/etc/chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json";
-
-
 
   users = {
     users.skrimix = {
@@ -256,8 +287,8 @@
     jq
     p7zip
     filezilla
-    libreoffice-qt
     meld
+    libreoffice-qt
     onlyoffice-bin_latest
     openrgb-with-all-plugins
     sidequest
@@ -271,12 +302,13 @@
     usbutils # lsusb
     libsForQt5.kio # Needed for file picker in some apps (e.g. Monero GUI)
     wl-clipboard # For WayDroid clipboard sharing
-    pulseaudio # pactl
+    pulseaudio # pactl for output switching
     vesktop # Discord
     ((nnn.override { withNerdIcons = true; }).overrideAttrs (finalAttrs: previousAttrs: {
       # "Buffer overflow detected" crash
       hardeningDisable = [ "fortify3" ];
     }))
+    fsearch
 
     # Media
     spotify
@@ -310,11 +342,11 @@
     github-desktop
     burpsuite
     android-studio
-    (jetbrains.plugins.addPlugins jetbrains.rider [ "github-copilot" ])
+    #(jetbrains.plugins.addPlugins jetbrains.rider [ "github-copilot" ])
+    jetbrains.rider
     imhex
-    #jadx
+    #jadx # fails to build
     ghidra
-    #vscode-fhs
     # Drag and drop does not work in Wayland
     # https://github.com/microsoft/vscode/issues/156723
     (vscode.override { commandLineArgs = "-enable-features=UseOzonePlatform --ozone-platform=x11"; }).fhs
@@ -344,7 +376,7 @@
     nvtopPackages.amd
     amdgpu_top
 
-    # Info Center deps
+    # KDE Info Center deps
     pciutils
     mesa-demos
     clinfo
@@ -356,14 +388,14 @@
     kate
     yakuake
     spectacle
-    discover
+    #discover
     ksystemlog
     kalk
     kcalc
     skanpage
     skanlite
     kleopatra
-    kompare
+    #kompare
     ktorrent
     filelight
     krdc
@@ -372,24 +404,28 @@
   fonts = {
     fontDir.enable = true;
     packages = with pkgs; [
-      corefonts
+      #corefonts
       roboto
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
       liberation_ttf
+      (nerdfonts.override { fonts = [ "CascadiaCode" "JetBrainsMono" ]; })
+
+      # Custom packages
       apple-fonts
       windows-fonts
       leanconkyconfig-font
-      (nerdfonts.override { fonts = [ "CascadiaCode" "JetBrainsMono" ]; })
     ];
   };
 
   virtualisation = {
     waydroid.enable = true;
     vmware.host.enable = true;
-    libvirtd.enable = true;
-    libvirtd.onBoot = "ignore";
+    libvirtd = {
+      enable = true;
+      onBoot = "ignore";
+    };
   };
 
   services = {
@@ -402,10 +438,10 @@
       nssmdns4 = true;
     };
     sunshine.enable = true;
-    # ollama = {
-    #  enable = true;
-    #  acceleration = "rocm";
-    # };
+    ollama = {
+      enable = true;
+      acceleration = "rocm";
+    };
   };
 
   programs = {
@@ -434,6 +470,19 @@
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
+        stdenv.cc.cc
+        zlib
+        fuse3
+        icu
+        zlib
+        nss
+        openssl
+        curl
+        expat
+        fontconfig
+        xorg.libX11
+        xorg.libICE
+        xorg.libSM
       ];
     };
     virt-manager.enable = true;
