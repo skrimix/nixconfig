@@ -241,7 +241,7 @@
 
     # Fix opening links in vscode-fhs
     config.common.default = "*";
-    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
     xdgOpenUsePortal = true;
   };
 
