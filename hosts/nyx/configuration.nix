@@ -345,7 +345,7 @@
     #(jetbrains.plugins.addPlugins jetbrains.rider [ "github-copilot" ])
     jetbrains.rider
     imhex
-    #jadx # fails to build
+    jadx # fails to build
     ghidra
     # Drag and drop does not work in Wayland
     # https://github.com/microsoft/vscode/issues/156723
