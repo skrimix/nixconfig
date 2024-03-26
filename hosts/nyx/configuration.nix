@@ -181,7 +181,8 @@
         wantedBy = [ "default.target" ];
         serviceConfig = {
           Type = "simple";
-          ExecStart = "/run/current-system/sw/bin/nix-shell -p nodejs_20 --command \"cd /mnt/netac/textgen/SillyTavern && node server.js --disableCsrf\"";
+          WorkingDirectory = "/mnt/netac/textgen/SillyTavern";
+          ExecStart = "/run/current-system/sw/bin/nix-shell -p nodejs_20 --command \"node server.js --disableCsrf\"";
         };
       };
     };
