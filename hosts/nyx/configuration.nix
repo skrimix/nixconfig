@@ -65,6 +65,7 @@
       "net.core.netdev_max_backlog" = 16384;
       "net.ipv4.tcp_fastopen" = 3;
       "net.ipv4.tcp_mtu_probing" = 1;
+      "net.ipv4.ip_unprivileged_port_start" = 0;
 
       # SysRq
       # enable control of keyboard (SAK, unraw)
@@ -345,7 +346,7 @@
     #(jetbrains.plugins.addPlugins jetbrains.rider [ "github-copilot" ])
     jetbrains.rider
     imhex
-    jadx # fails to build
+    jadx
     ghidra
     # Drag and drop does not work in Wayland
     # https://github.com/microsoft/vscode/issues/156723
@@ -425,6 +426,10 @@
     libvirtd = {
       enable = true;
       onBoot = "ignore";
+    };
+    docker.rootless = {
+      enable = true;
+      setSocketVariable = true;
     };
   };
 
