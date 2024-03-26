@@ -373,7 +373,7 @@
     # Gaming
     wineWowPackages.waylandFull
     winetricks
-    bottles
+    #bottles
     mangohud
     protontricks
     lutris
