@@ -310,6 +310,7 @@
       hardeningDisable = [ "fortify3" ];
     }))
     fsearch
+    distrobox
 
     # Media
     spotify
@@ -429,6 +430,7 @@
     };
     docker = {
       enable = true;
+      autoPrune.enable = true;
       # rootless = {
       #   enable = true;
       #   setSocketVariable = true;
