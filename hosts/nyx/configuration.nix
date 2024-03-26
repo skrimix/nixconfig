@@ -171,8 +171,8 @@
         description = "FSearch - Periodically update database";
         wantedBy = [ "basic.target" ];
         timerConfig = {
-          OnBootSec = "10min";
-          OnUnitActiveSec = "30min";
+          OnBootSec = "20min";
+          OnUnitActiveSec = "1h";
           Unit = "fsearch_update_database.service";
         };
       };
@@ -360,7 +360,7 @@
     # Gaming
     wineWowPackages.waylandFull
     winetricks
-    bottles
+    #bottles
     mangohud
     protontricks
     lutris
