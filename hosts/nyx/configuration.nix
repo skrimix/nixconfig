@@ -143,8 +143,19 @@
     services.ollama.wantedBy = lib.mkForce [ ];
 
     services.nixos-upgrade.environment = lib.mkForce {
+      all_proxy = "";
+      ftp_proxy = "";
       http_proxy = "";
       https_proxy = "";
+      rsync_proxy = "";
+    };
+
+    services.docker.environment = lib.mkForce {
+      all_proxy = "";
+      ftp_proxy = "";
+      http_proxy = "";
+      https_proxy = "";
+      rsync_proxy = "";
     };
 
     user.services = {
