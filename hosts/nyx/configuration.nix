@@ -112,8 +112,7 @@
       powerOnBoot = true;
       settings = {
         General = {
-          # Enable device power reporting
-          Experimental = true;
+          Experimental = true; # enable device power reporting
         };
       };
     };
@@ -139,7 +138,7 @@
       DefaultTimeoutStopSec=20s
     '';
 
-    # Disable service
+    # disable service
     services.ollama.wantedBy = lib.mkForce [ ];
 
     services.nixos-upgrade.environment = lib.mkForce {
@@ -168,6 +167,7 @@
         };
         path = [ pkgs.fontconfig pkgs.iproute2 pkgs.util-linux pkgs.wget pkgs.amdgpu_top pkgs.coreutils-full pkgs.python3 ];
       };
+
       fsearch_update_database = {
         description = "FSearch - Update database";
         wantedBy = [ "default.target" ];
@@ -176,6 +176,7 @@
           ExecStart = "${pkgs.fsearch}/bin/fsearch --update-database";
         };
       };
+
       sillytavern = {
         description = "SillyTavern";
         wantedBy = [ "default.target" ];
@@ -193,7 +194,7 @@
         wantedBy = [ "basic.target" ];
         timerConfig = {
           OnBootSec = "20min";
-          OnUnitActiveSec = "1h";
+          OnUnitActiveSec = "3h";
           Unit = "fsearch_update_database.service";
         };
       };
@@ -212,13 +213,13 @@
 
 
   services = {
-    # Replace kernel console with kmscon
+    # replace kernel console with kmscon
     kmscon = {
       enable = true;
       hwRender = true;
     };
 
-    # SDDM + Plasms 6
+    # SDDM + Plasma 6
     xserver = {
       enable = true;
       displayManager = {
@@ -226,7 +227,7 @@
           enable = true;
           autoNumlock = true;
           settings = {
-            Autologin = {
+            Autologin = { # auto-lock right after login instead
               Session = "plasma.desktop";
               User = "skrimix";
             };
@@ -251,22 +252,23 @@
   };
 
   environment.sessionVariables = {
-    # Enable wayland for programs that support it
-    NIXOS_OZONE_WL = "1";
-    # Use askpass even in terminal
-    SSH_ASKPASS_REQUIRE = "prefer";
+    NIXOS_OZONE_WL = "1"; # enable wayland for programs that support it
+    SSH_ASKPASS_REQUIRE = "prefer"; # use askpass even in terminal
   };
 
   xdg.portal = {
     enable = true;
 
-    # Fix opening links in vscode-fhs
+    # fix opening links in vscode-fhs
     config.common.default = "*";
-    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-gtk ];
     xdgOpenUsePortal = true;
+    extraPortals = [
+      pkgs.kdePackages.xdg-desktop-portal-kde
+      pkgs.xdg-desktop-portal-gtk # needed for gnome apps in flatpak?
+    ];
   };
 
-  # Fix Plasma integration in Brave Browser
+  # fix Plasma integration in Brave Browser
   environment.etc."chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json".source = "${pkgs.kdePackages.plasma-browser-integration}/etc/chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json";
 
   users = {
@@ -331,6 +333,7 @@
     }))
     fsearch
     distrobox
+    resources
 
     # Media
     spotify
@@ -410,14 +413,12 @@
     kate
     yakuake
     spectacle
-    #discover
     ksystemlog
     kalk
     kcalc
     skanpage
     skanlite
     kleopatra
-    #kompare
     ktorrent
     filelight
     krdc
@@ -462,7 +463,6 @@
     printing.enable = true;
     dbus.enable = true;
     flatpak.enable = true;
-    #packagekit.enable = true;
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -546,9 +546,7 @@
   };
 
 
-  #system.copySystemConfiguration = true;
-
-  # DO NOT CHANGE
+  # Do not change without a good reason
   system.stateVersion = "23.11";
 }
 

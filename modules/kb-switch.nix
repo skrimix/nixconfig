@@ -24,8 +24,8 @@ in
 
     serviceConfig = {
       ExecStart = "${script}";
-      #Restart = "on-failure";
-      #RestartSec = "5s";
+      Restart = "on-failure";
+      RestartSec = "5s";
     };
   };
 }
