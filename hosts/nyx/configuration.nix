@@ -125,13 +125,16 @@
     };
   };
 
-  services.udev.extraRules = ''
-    # Enable TRIM for external SSD
-    ACTION=="add|change", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="9210", SUBSYSTEM=="block", ATTR{../../scsi_disk/*/provisioning_mode}="unmap"
+  services.udev = {
+    packages = with pkgs; [ openrgb-with-all-plugins ];
+    extraRules = ''
+      # Enable TRIM for external SSD
+      ACTION=="add|change", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="9210", SUBSYSTEM=="block", ATTR{../../scsi_disk/*/provisioning_mode}="unmap"
 
-    # NVMe SSD
-    ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
-  '';
+      # NVMe SSD
+      ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
+    '';
+  };
 
   systemd = {
     extraConfig = ''
@@ -227,7 +230,8 @@
           enable = true;
           autoNumlock = true;
           settings = {
-            Autologin = { # auto-lock right after login instead
+            Autologin = {
+              # auto-lock right after login instead
               Session = "plasma.desktop";
               User = "skrimix";
             };
