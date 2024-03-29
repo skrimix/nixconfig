@@ -143,9 +143,11 @@
 
     oomd = {
       enable = true;
-      # follow Fedora defaults
       enableUserSlices = true;
       enableRootSlice = true;
+      extraConfig = {
+        DefaultMemoryPressureDurationSec = "15s";
+      };
     };
 
     # disable service
