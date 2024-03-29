@@ -351,13 +351,15 @@
     # Media
     spotify
     (mpv.override { scripts = [ mpvScripts.thumbfast mpvScripts.uosc ]; })
+    vlc
+    haruna
     (wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         obs-pipewire-audio-capture
         obs-vkcapture
       ];
     })
-    vlc
+    
     gimp
     upscayl
     duplicacy
