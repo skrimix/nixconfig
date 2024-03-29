@@ -3,14 +3,13 @@ import evdev
 from evdev import ecodes
 from dbus import SessionBus
 
-KEYBOARD_DEVICE_NAME = 'Weltrend USB Mouse'  # yeah, of course mouse is a keyboard
+KEYBOARD_DEVICE_NAME = 'Weltrend USB Mouse'  # mouse == keyboard, m'kay?
 
 _SWITCH_HOTKEY = {"KEY_LEFTSHIFT", "KEY_LEFTCTRL"}
 SWITCH_HOTKEY = set([ecodes.ecodes[k] for k in _SWITCH_HOTKEY])
 hotkey_len = len(SWITCH_HOTKEY)
 
 
-# this is ugly (hardcode username and dbus?)
 def switch_layout():
     print("Switching keyboard layout")
     pid = os.popen("pidof -s kded6").read().strip('\n')

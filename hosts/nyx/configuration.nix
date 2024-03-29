@@ -141,6 +141,11 @@
       DefaultTimeoutStopSec=20s
     '';
 
+    oomd = {
+      enable = true;
+      enableUserSlices = true;
+    };
+
     # disable service
     services.ollama.wantedBy = lib.mkForce [ ];
 
@@ -196,7 +201,7 @@
         description = "FSearch - Periodically update database";
         wantedBy = [ "basic.target" ];
         timerConfig = {
-          OnBootSec = "20min";
+          OnBootSec = "1h";
           OnUnitActiveSec = "3h";
           Unit = "fsearch_update_database.service";
         };
@@ -378,6 +383,7 @@
     # Drag and drop does not work in Wayland
     # https://github.com/microsoft/vscode/issues/156723
     (vscode.override { commandLineArgs = "-enable-features=UseOzonePlatform --ozone-platform=x11"; }).fhs
+    mongodb-compass
 
     # Wallets
     monero-gui
