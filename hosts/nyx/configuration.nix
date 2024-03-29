@@ -143,7 +143,9 @@
 
     oomd = {
       enable = true;
+      # follow Fedora defaults
       enableUserSlices = true;
+      enableRootSlice = true;
     };
 
     # disable service
