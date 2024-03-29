@@ -256,7 +256,7 @@
 
     earlyoom = {
       enable = true;
-      enableNotifications = true;
+      enableNotifications = false; # waiting for https://github.com/NixOS/nixpkgs/pull/280054
       freeMemThreshold = 10;
       freeSwapThreshold = 10;
       freeMemKillThreshold = 5;
