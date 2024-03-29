@@ -350,9 +350,7 @@
 
     # Media
     spotify
-    mpv
-    mpvScripts.thumbfast
-    mpvScripts.uosc
+    (mpv.override { scripts = [ mpvScripts.thumbfast mpvScripts.uosc ]; })
     (wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         obs-pipewire-audio-capture
