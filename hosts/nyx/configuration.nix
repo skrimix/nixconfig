@@ -190,17 +190,6 @@
           ExecStart = "/run/current-system/sw/bin/nix-shell -p nodejs_20 --command \"node server.js --disableCsrf\"";
         };
       };
-
-      play-with-mpv = {
-        description = "play-with-mpv daemon";
-        wantedBy = [ "graphical-session.target" ];
-        partOf = [ "graphical-session.target" ];
-        serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.play-with-mpv}/bin/play-with-mpv";
-        };
-        path = [ pkgs.mpv ];
-      };
     };
 
     user.timers = {
@@ -363,6 +352,7 @@
     # Media
     spotify
     (mpv.override { scripts = with mpvScripts; [ thumbfast uosc sponsorblock mpris ]; })
+    mpv-handler
     vlc
     (wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
