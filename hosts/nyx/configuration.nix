@@ -199,6 +199,7 @@
           Type = "simple";
           ExecStart = "${pkgs.play-with-mpv}/bin/play-with-mpv";
         };
+        path = [ pkgs.mpv ];
       };
     };
 
