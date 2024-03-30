@@ -164,6 +164,7 @@
       conky = {
         description = "Conky daemon";
         #wantedBy = [ "graphical-session.target" ];
+        #partOf = [ "graphical-session.target" ];
         serviceConfig = {
           Type = "simple";
           ExecStart = "${pkgs.conky}/bin/conky -c /home/skrimix/.config/conky/lean-conky-config/conky.conf";
@@ -187,6 +188,16 @@
           Type = "simple";
           WorkingDirectory = "/mnt/netac/textgen/SillyTavern";
           ExecStart = "/run/current-system/sw/bin/nix-shell -p nodejs_20 --command \"node server.js --disableCsrf\"";
+        };
+      };
+
+      play-with-mpv = {
+        description = "play-with-mpv daemon";
+        wantedBy = [ "graphical-session.target" ];
+        partOf = [ "graphical-session.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.play-with-mpv}/bin/play-with-mpv";
         };
       };
     };
@@ -350,7 +361,7 @@
 
     # Media
     spotify
-    (mpv.override { scripts = with mpvScripts; [ thumbfast uosc sponsorblock ]; })
+    (mpv.override { scripts = with mpvScripts; [ thumbfast uosc sponsorblock mpris ]; })
     vlc
     (wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
