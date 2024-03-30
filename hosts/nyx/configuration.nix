@@ -351,7 +351,7 @@
 
     # Media
     spotify
-    (mpv.override { scripts = with mpvScripts; [ thumbfast uosc sponsorblock mpris ]; })
+    (mpv.override { scripts = with mpvScripts; [ thumbfast uosc sponsorblock mpris quality-menu ]; })
     mpv-handler
     vlc
     (wrapOBS {
