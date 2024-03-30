@@ -15,7 +15,12 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-EPWlLsCdvIpll4jCVmj61RxO/diZEd/2k2o0wrYO2Pk=";
 
-  # Additional metadata
+  installPhase = ''
+    runHook preInstall
+    install -Dm644 share/linux/mpv-handler.desktop $out/share/applications/mpv-handler.desktop
+    runHook postInstall
+  '';
+
   meta = {
     description = "A protocol handler for mpv. Use mpv and yt-dlp to play video and music from the websites.";
     homepage = "https://github.com/akiirui/mpv-handler/";
