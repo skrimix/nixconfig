@@ -350,7 +350,7 @@
 
     # Media
     spotify
-    (mpv.override { scripts = [ mpvScripts.thumbfast mpvScripts.uosc ]; })
+    (mpv.override { scripts = with mpvScripts; [ thumbfast uosc sponsorblock ]; })
     vlc
     (wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
