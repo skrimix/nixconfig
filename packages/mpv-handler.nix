@@ -15,10 +15,8 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-EPWlLsCdvIpll4jCVmj61RxO/diZEd/2k2o0wrYO2Pk=";
 
-  installPhase = ''
-    runHook preInstall
+  postInstall = ''
     install -Dm644 share/linux/mpv-handler.desktop $out/share/applications/mpv-handler.desktop
-    runHook postInstall
   '';
 
   meta = {
