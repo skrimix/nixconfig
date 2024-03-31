@@ -439,9 +439,12 @@
     ktorrent
     filelight
     krdc
+
+    # kio-gdrive with dependencies
     kio-gdrive
-    kaccounts-providers # for kio-gdrive
-    kaccounts-integration # for kio-gdrive
+    kaccounts-providers 
+    kaccounts-integration
+    signond
   ]);
 
   fonts = {
