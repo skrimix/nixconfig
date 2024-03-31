@@ -439,6 +439,7 @@
     ktorrent
     filelight
     krdc
+    kio-gdrive
   ]);
 
   fonts = {
