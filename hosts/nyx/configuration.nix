@@ -440,6 +440,8 @@
     filelight
     krdc
     kio-gdrive
+    kaccounts-providers # for kio-gdrive
+    kaccounts-integration # for kio-gdrive
   ]);
 
   fonts = {
