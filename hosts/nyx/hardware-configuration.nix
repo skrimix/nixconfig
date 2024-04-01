@@ -43,9 +43,8 @@ in
       "video=DP-2:2560x1440@75" # set mode early on the main display
       "video=HDMI-A-1:1920x1080@75" # overclock secondary display
       "zswap.enabled=0" # zram is used instead of zswap
-      #"amdgpu.ppfeaturemask=0xffffffff" # unlock AMDGPU controls
+      "amdgpu.ppfeaturemask=0xffffffff" # unlock AMDGPU controls
       #"amdgpu.ppfeaturemask=0xffffbfff" # disable overdrive
-      "amdgpu.ppfeaturemask=0xfffd3fff" # disable gfxoff(?)
       "amdgpu.gpu_recovery=1" # enable AMDGPU recovery
       "psi=1"
       "amd_pstate=active" # let the cpu manage its frequency
