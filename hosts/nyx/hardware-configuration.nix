@@ -47,7 +47,8 @@ in
       # zram is used instead of zswap
       "zswap.enabled=0"
       # Unlock AMDGPU controls
-      "amdgpu.ppfeaturemask=0xffffffff"
+      #"amdgpu.ppfeaturemask=0xffffffff"
+      "amdgpu.ppfeaturemask=0xffffbfff" # no overdrive
       # Enable AMDGPU recovery
       "amdgpu.gpu_recovery=1"
       "psi=1"
