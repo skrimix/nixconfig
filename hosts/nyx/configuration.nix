@@ -288,7 +288,7 @@
   users = {
     users.skrimix = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "adbusers" "networkmanager" "scanner" "libvirtd" ];
+      extraGroups = [ "wheel" "adbusers" "networkmanager" "scanner" "libvirtd" "gamemode" ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGknvPNFi62TmeSZBGklGX+nlM+tSaLJizResYf81Itd skrimix"
@@ -538,6 +538,16 @@
     gamemode = {
       enable = true;
       enableRenice = true;
+      settings = {
+        general = {
+          desiredgov = "powersave";
+          renice = 5;
+        };
+        gpu = {
+          gpu_device = 1;
+          amd_performance_level = "high";
+        };
+      };
     };
     noisetorch.enable = true;
     coolercontrol.enable = true;

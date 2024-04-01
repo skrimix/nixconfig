@@ -40,22 +40,15 @@ in
     blacklistedKernelModules = [ "k10temp" ];
     extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
     kernelParams = [
-      # Set mode early on the main display
-      "video=DP-2:2560x1440@75"
-      # Overclock secondary display
-      "video=HDMI-A-1:1920x1080@75"
-      # zram is used instead of zswap
-      "zswap.enabled=0"
-      # Unlock AMDGPU controls
-      #"amdgpu.ppfeaturemask=0xffffffff"
+      "video=DP-2:2560x1440@75" # set mode early on the main display
+      "video=HDMI-A-1:1920x1080@75" # overclock secondary display
+      "zswap.enabled=0" # zram is used instead of zswap
+      #"amdgpu.ppfeaturemask=0xffffffff" # unlock AMDGPU controls
       "amdgpu.ppfeaturemask=0xffffbfff" # no overdrive
-      # Enable AMDGPU recovery
-      "amdgpu.gpu_recovery=1"
+      "amdgpu.gpu_recovery=1" # enable AMDGPU recovery
       "psi=1"
-      # Let the cpu manage its frequency
-      "amd_pstate=active"
-      # Avoid excessive CPU load when using VMware
-      "transparent_hugepage=never"
+      "amd_pstate=active" # let the cpu manage its frequency
+      "transparent_hugepage=never" # avoid excessive CPU load when using VMware
     ];
   };
 
@@ -76,6 +69,7 @@ in
   # Default "modesetting" driver is better
   #services.xserver.videoDrivers = [ "amdgpu" ];
 
+  # Disable secondary display in SDDM
   services.xserver.displayManager.setupCommands = ''
     ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-1 --off --output DP-2 --refresh 75
   '';
