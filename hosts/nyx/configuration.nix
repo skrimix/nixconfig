@@ -545,7 +545,7 @@
         };
         gpu = {
           gpu_device = 1;
-          apply_gpu_optimizations = "accept-responsibility";
+          apply_gpu_optimisations = "accept-responsibility";
           amd_performance_level = "high";
         };
       };
