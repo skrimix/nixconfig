@@ -48,6 +48,8 @@ in
       "zswap.enabled=0"
       # Unlock AMDGPU controls
       "amdgpu.ppfeaturemask=0xffffffff"
+      # Enable AMDGPU recovery
+      "amdgpu.gpu_recovery=1"
       "psi=1"
       # Let the cpu manage its frequency
       "amd_pstate=active"
@@ -59,14 +61,16 @@ in
   zramSwap.enable = true;
 
   environment.sessionVariables = { VDPAU_DRIVER = "radeonsi"; };
-  hardware.opengl = {
-    extraPackages = with pkgs; [
-      amdvlk
-    ];
-    extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk
-    ];
-  };
+
+  # RADV driver seems to be better than AMDVLK
+  # hardware.opengl = {
+  #   extraPackages = with pkgs; [
+  #     amdvlk
+  #   ];
+  #   extraPackages32 = with pkgs; [
+  #     driversi686Linux.amdvlk
+  #   ];
+  # };
 
   # Default "modesetting" driver is better
   #services.xserver.videoDrivers = [ "amdgpu" ];

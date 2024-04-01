@@ -172,14 +172,14 @@
         path = [ pkgs.fontconfig pkgs.iproute2 pkgs.util-linux pkgs.wget pkgs.amdgpu_top pkgs.coreutils-full pkgs.python3 ];
       };
 
-      fsearch_update_database = {
+      /* fsearch_update_database = {
         description = "FSearch - Update database";
         wantedBy = [ "default.target" ];
         serviceConfig = {
           Type = "simple";
           ExecStart = "${pkgs.fsearch}/bin/fsearch --update-database";
         };
-      };
+      }; */
 
       sillytavern = {
         description = "SillyTavern";
@@ -439,12 +439,6 @@
     ktorrent
     filelight
     krdc
-
-    # kio-gdrive with dependencies
-    kio-gdrive
-    kaccounts-providers 
-    kaccounts-integration
-    signond
   ]);
 
   fonts = {
