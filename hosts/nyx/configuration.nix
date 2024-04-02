@@ -348,6 +348,7 @@
     fsearch
     distrobox
     resources
+    ookla-speedtest
 
     # Media
     spotify
