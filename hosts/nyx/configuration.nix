@@ -285,10 +285,13 @@
   # fix Plasma integration in Brave Browser
   environment.etc."chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json".source = "${pkgs.kdePackages.plasma-browser-integration}/etc/chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json";
 
+  # Outdated application menu is better than Plasma falling apart
+  system.userActivationScripts.rebuildSycoca = lib.mkForce "";
+  
   users = {
     users.skrimix = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "adbusers" "networkmanager" "scanner" "libvirtd" "gamemode" ];
+      extraGroups = [ "wheel" "adbusers" "networkmanager" "scanner" "libvirtd" "gamemode" "dialout" ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGknvPNFi62TmeSZBGklGX+nlM+tSaLJizResYf81Itd skrimix"
