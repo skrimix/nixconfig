@@ -393,6 +393,7 @@
     # https://github.com/microsoft/vscode/issues/156723
     (vscode.override { commandLineArgs = "-enable-features=UseOzonePlatform --ozone-platform=x11"; }).fhs
     mongodb-compass
+    arduino-ide
 
     # Wallets
     monero-gui
