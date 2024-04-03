@@ -340,7 +340,6 @@
     any-nix-shell # keep zsh in nix-shell
     libnotify # notify-send
     usbutils # lsusb
-    libsForQt5.kio # Needed for file picker in some apps (e.g. Monero GUI)
     wl-clipboard # For WayDroid clipboard sharing
     pulseaudio # pactl for output switching
     vesktop # Discord
