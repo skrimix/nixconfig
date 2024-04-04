@@ -491,7 +491,7 @@
     sunshine.enable = true;
     ollama = {
       enable = true;
-      acceleration = "rocm";
+      #acceleration = "rocm";
     };
     hardware.openrgb.enable = true;
   };
