@@ -39,7 +39,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackagesOverride pkgs.linuxPackages_zen;
     extraModulePackages = with config.boot.kernelPackages; [ vmware ];
     tmp.cleanOnBoot = true;
     supportedFilesystems = [ "ntfs" ];
@@ -494,6 +494,7 @@
       #acceleration = "rocm";
     };
     hardware.openrgb.enable = true;
+    corefreq.enable = true;
   };
 
   programs = {

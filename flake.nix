@@ -16,6 +16,7 @@
         ./modules/sunshine.nix
         ./modules/kb-switch.nix
         ./modules/lact.nix
+        ./modules/corefreq.nix
         ./hosts/nyx/configuration.nix
       ];
     };
