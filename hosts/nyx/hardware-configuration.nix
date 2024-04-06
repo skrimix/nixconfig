@@ -109,25 +109,22 @@ in
       ] ++ btrfsOpts;
     };
 
-  fileSystems."/mnt/arch" =
-    {
-      device = "/dev/disk/by-uuid/6d2e5dd1-bd7f-411d-a2e5-135f4149750a";
-      fsType = "btrfs";
-      options = btrfsOpts;
-    };
-
   fileSystems."/mnt/870evo_btrfs" =
     {
       device = "/dev/disk/by-uuid/18541afc-50b3-40de-9888-a2b8acdbe888";
       fsType = "btrfs";
-      options = btrfsOpts;
+      options = [
+        "nofail"
+      ] ++ btrfsOpts;
     };
 
   fileSystems."/mnt/kingston_btrfs" =
     {
       device = "/dev/disk/by-uuid/81b2e3bc-b353-40e9-ada7-f0e32ce21b02";
       fsType = "btrfs";
-      options = btrfsOpts;
+      options = [
+         "nofail"
+      ] ++ btrfsOpts;
     };
 
   fileSystems."/mnt/windows" =

@@ -6,6 +6,7 @@
       windows-fonts = prev.callPackage ./windows-fonts.nix { };
       leanconkyconfig-font = prev.callPackage ./leanconkyconfig-font.nix { };
       mpv-handler = prev.callPackage ./mpv-handler.nix { };
+      discover-wrapped = prev.callPackage ./discover-wrapped.nix { };
 
       linuxPackagesOverride = linuxPackages:
         linuxPackages.extend (lfinal: lprev: {

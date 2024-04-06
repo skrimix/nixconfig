@@ -351,6 +351,7 @@
     distrobox
     resources
     ookla-speedtest
+    discover-wrapped # KDE Discover
 
     # Media
     spotify
@@ -388,6 +389,7 @@
     android-studio
     #(jetbrains.plugins.addPlugins jetbrains.rider [ "github-copilot" ])
     jetbrains.rider
+    dotnetCorePackages.sdk_8_0
     imhex
     jadx
     ghidra
