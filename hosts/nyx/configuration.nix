@@ -414,7 +414,6 @@
     lutris
     protonup-qt
     goverlay
-    heroic
 
     # Hardware monitoring
     (conky.override { waylandSupport = true; })
