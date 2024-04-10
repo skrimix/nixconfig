@@ -190,16 +190,35 @@
           ExecStart = "/run/current-system/sw/bin/nix-shell -p nodejs_20 --command \"node server.js --disableCsrf\"";
         };
       };
+
+      duplicacy-backup-user = {
+        description = "Duplicacy backup for user directory";
+        wantedBy = [ "default.target" ];
+        serviceConfig = {
+          Type = "simple";
+          WorkingDirectory = "%h";
+          ExecStart = "${pkgs.duplicacy}/bin/duplicacy backup -stats -threads 16";
+        };
+      };
     };
 
     user.timers = {
-      fsearch_update_database = {
+      /* fsearch_update_database = {
         description = "FSearch - Periodically update database";
         wantedBy = [ "basic.target" ];
         timerConfig = {
           OnBootSec = "1h";
           OnUnitActiveSec = "3h";
           Unit = "fsearch_update_database.service";
+        };
+      }; */
+      duplicacy-backup-home = {
+        description = "Run daily Duplicacy backup for user directory";
+        wantedBy = [ "basic.target" ];
+        timerConfig = {
+          Persistent = true;
+          OnCalendar = "daily";
+          Unit = "duplicacy-backup-user.service";
         };
       };
     };
