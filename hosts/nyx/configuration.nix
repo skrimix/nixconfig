@@ -212,7 +212,7 @@
           Unit = "fsearch_update_database.service";
         };
       }; */
-      duplicacy-backup-home = {
+      duplicacy-backup-user = {
         description = "Run daily Duplicacy backup for user directory";
         wantedBy = [ "basic.target" ];
         timerConfig = {
