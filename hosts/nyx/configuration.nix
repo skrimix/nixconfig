@@ -207,6 +207,7 @@
         wantedBy = [ "default.target" ];
         serviceConfig = {
           Type = "oneshot";
+          RemainAfterExit = true;
           ExecStart = "/run/wrappers/bin/noisetorch -i -s alsa_input.pci-0000_2a_00.4.analog-stereo -t 90";
           ExecStop = "/run/wrappers/bin/noisetorch -u";
           Restart = "on-failure";
