@@ -193,7 +193,6 @@
 
       duplicacy-backup-user = {
         description = "Duplicacy backup for user directory";
-        wantedBy = [ "default.target" ];
         serviceConfig = {
           Type = "simple";
           WorkingDirectory = "%h";
