@@ -199,6 +199,20 @@
           ExecStart = "${pkgs.duplicacy}/bin/duplicacy backup -stats -threads 16";
         };
       };
+
+      noisetorch = {
+        description = "Noisetorch Noise Cancelling";
+        requires = [ "sys-devices-pci0000:00-0000:00:08.1-0000:2a:00.4-sound-card1-controlC1.device" ];
+        after = [ "sys-devices-pci0000:00-0000:00:08.1-0000:2a:00.4-sound-card1-controlC1.device" "pipewire.service" ];
+        wantedBy = [ "default.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "/run/wrappers/bin/noisetorch -i -s alsa_input.pci-0000_2a_00.4.analog-stereo -t 90";
+          ExecStop = "/run/wrappers/bin/noisetorch -u";
+          Restart = "on-failure";
+          RestartSec = "3";
+        };
+      };
     };
 
     user.timers = {
@@ -305,7 +319,7 @@
 
   # Outdated application menu is better than Plasma falling apart
   system.userActivationScripts.rebuildSycoca = lib.mkForce "";
-  
+
   users = {
     users.skrimix = {
       isNormalUser = true;
