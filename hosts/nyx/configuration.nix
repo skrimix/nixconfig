@@ -200,7 +200,7 @@
         };
       };
 
-      noisetorch = {
+      /* noisetorch = {
         description = "Noisetorch Noise Cancelling";
         requires = [ "sys-devices-pci0000:00-0000:00:08.1-0000:2a:00.4-sound-card1-controlC1.device" ];
         after = [ "sys-devices-pci0000:00-0000:00:08.1-0000:2a:00.4-sound-card1-controlC1.device" "pipewire.service" ];
@@ -213,7 +213,7 @@
           Restart = "on-failure";
           RestartSec = "3";
         };
-      };
+      }; */
     };
 
     user.timers = {
@@ -529,6 +529,11 @@
     };
     hardware.openrgb.enable = true;
     corefreq.enable = true;
+    noisetorch = {
+      enable = true;
+      deviceUnit = "sys-devices-pci0000:00-0000:00:08.1-0000:2a:00.4-sound-card1-controlC1.device";
+      deviceId = "alsa_input.pci-0000_2a_00.4.analog-stereo";
+    };
   };
 
   programs = {
@@ -589,7 +594,7 @@
         };
       };
     };
-    noisetorch.enable = true;
+    #noisetorch.enable = true;
     coolercontrol.enable = true;
   };
 

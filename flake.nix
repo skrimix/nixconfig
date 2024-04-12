@@ -17,6 +17,7 @@
         ./modules/kb-switch.nix
         ./modules/lact.nix
         ./modules/corefreq.nix
+        ./modules/noisetorch.nix
         ./hosts/nyx/configuration.nix
       ];
     };
