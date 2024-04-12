@@ -206,7 +206,7 @@
         after = [ "sys-devices-pci0000:00-0000:00:08.1-0000:2a:00.4-sound-card1-controlC1.device" "pipewire.service" ];
         wantedBy = [ "default.target" ];
         serviceConfig = {
-          Type = "simple";
+          Type = "oneshot";
           ExecStart = "/run/wrappers/bin/noisetorch -i -s alsa_input.pci-0000_2a_00.4.analog-stereo -t 90";
           ExecStop = "/run/wrappers/bin/noisetorch -u";
           Restart = "on-failure";
