@@ -232,23 +232,20 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     wireplumber.configPackages = [
-      (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/51-alsa-custom.lua" ''
-        rules = {
+      (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/disable-idle-timeout.conf" ''
+        monitor.alsa.rules = [
           {
-            matches = {
-              {
-                { "node.name", "matches", "alsa_output.*" },
-              },
-            },
-            apply_properties = {
-              ["session.suspend-timeout-seconds"] = 0,
-            },
-          },
-        }
-
-        for _,v in ipairs(rules) do
-            table.insert(alsa_monitor.rules, v)
-        end
+            matches = [
+              { node.name = "~alsa_input.*" }
+              { node.name = "~alsa_output.*" }
+            ]
+            actions = {
+              update-props = {
+                session.suspend-timeout-seconds = 0
+              }
+            }
+          }
+        ]
       '')
     ];
   };
