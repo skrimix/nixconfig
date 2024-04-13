@@ -259,23 +259,21 @@
     };
 
     # SDDM + Plasma 6
-    xserver = {
-      enable = true;
-      displayManager = {
-        sddm = {
-          enable = true;
-          autoNumlock = true;
-          settings = {
-            Autologin = {
-              # auto-lock right after login instead
-              Session = "plasma.desktop";
-              User = "skrimix";
-            };
+    xserver.enable = true;
+    displayManager = {
+      sddm = {
+        enable = true;
+        autoNumlock = true;
+        settings = {
+          Autologin = {
+            # auto-lock right after login instead
+            Session = "plasma.desktop";
+            User = "skrimix";
           };
-          wayland.enable = true;
         };
-        defaultSession = "plasma";
+        wayland.enable = true;
       };
+      defaultSession = "plasma";
     };
     desktopManager.plasma6.enable = true;
 
