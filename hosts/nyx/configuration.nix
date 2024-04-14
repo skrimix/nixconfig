@@ -70,9 +70,10 @@
       # SysRq
       # enable control of keyboard (SAK, unraw)
       # enable sync command
+      # enable remount read-only
       # enable signalling of processes (term, kill, oom-kill)
       # allow reboot/poweroff
-      "kernel.sysrq" = 212;
+      "kernel.sysrq" = 246;
 
       "kernel.hung_task_timeout_secs" = 20;
     };
