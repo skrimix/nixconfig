@@ -602,6 +602,10 @@
     appimage = {
       enable = true;
       binfmt = true;
+      # fix warning until 291577 is merged
+      package = pkgs.appimage-run.overrideAttrs (oldAttrs: {
+        meta.mainPorgram = "appimage-run";
+      });
     };
   };
 
