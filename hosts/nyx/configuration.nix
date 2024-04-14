@@ -385,7 +385,8 @@
     distrobox
     resources
     ookla-speedtest
-    discover-wrapped # KDE Discover
+    discover-wrapped # KDE Discover (Flatpak only)
+    kdiskmark
 
     # Media
     spotify
@@ -406,7 +407,6 @@
     # Browsers
     brave
     chromium
-    tor-browser
     firefox-esr
     (librewolf.override { nativeMessagingHosts = [ kdePackages.plasma-browser-integration ]; })
 
@@ -452,6 +452,7 @@
     # Hardware monitoring
     (conky.override { waylandSupport = true; })
     lm_sensors
+    dmidecode
 
     # AMD GPU
     nvtopPackages.amd
@@ -478,6 +479,7 @@
     ktorrent
     filelight
     krdc
+    isoimagewriter
   ]);
 
   fonts = {
