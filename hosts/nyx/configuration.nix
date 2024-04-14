@@ -77,16 +77,6 @@
 
       "kernel.hung_task_timeout_secs" = 20;
     };
-
-    # support executing AppImage directly
-    binfmt.registrations.appimage = {
-      wrapInterpreterInShell = false;
-      interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-      recognitionType = "magic";
-      offset = 0;
-      mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-      magicOrExtension = ''\x7fELF....AI\x02'';
-    };
   };
 
   time.timeZone = "Asia/Yekaterinburg";
@@ -609,6 +599,10 @@
       };
     };
     coolercontrol.enable = true;
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
   };
 
   security.polkit = {
