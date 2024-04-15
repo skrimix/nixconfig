@@ -292,10 +292,10 @@
     earlyoom = {
       enable = true;
       enableNotifications = false; # waiting for https://github.com/NixOS/nixpkgs/pull/280054
-      freeMemThreshold = 10;
-      freeSwapThreshold = 10;
-      freeMemKillThreshold = 5;
-      freeSwapKillThreshold = 5;
+      freeMemThreshold = 5;
+      freeSwapThreshold = 5;
+      freeMemKillThreshold = 2;
+      freeSwapKillThreshold = 2;
     };
   };
 
@@ -451,7 +451,7 @@
     goverlay
 
     # Hardware monitoring
-    (conky.override { waylandSupport = true; })
+    #(conky.override { waylandSupport = true; })
     lm_sensors
     dmidecode
 
@@ -497,7 +497,7 @@
       # Custom packages
       apple-fonts
       windows-fonts
-      leanconkyconfig-font
+      #leanconkyconfig-font
     ];
   };
 
