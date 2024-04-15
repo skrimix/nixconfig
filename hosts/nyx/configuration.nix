@@ -320,7 +320,7 @@
   environment.etc."chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json".source = "${pkgs.kdePackages.plasma-browser-integration}/etc/chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json";
 
   # Outdated application menu is better than Plasma falling apart
-  system.userActivationScripts.rebuildSycoca = lib.mkForce "";
+  #system.userActivationScripts.rebuildSycoca = lib.mkForce "";
 
   users = {
     users.skrimix = {
