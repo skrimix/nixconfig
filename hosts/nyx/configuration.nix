@@ -142,6 +142,11 @@
       DefaultTimeoutStopSec=20s
     '';
 
+    additionalUpstreamSystemUnits = [
+      "soft-reboot.target"
+      "systemd-soft-reboot.service"
+    ];
+
     # disable service
     services.ollama.wantedBy = lib.mkForce [ ];
 
