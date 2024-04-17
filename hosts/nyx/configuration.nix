@@ -531,7 +531,7 @@
       enable = true;
       #acceleration = "rocm";
     };
-    #hardware.openrgb.enable = true;
+    hardware.openrgb.enable = true;
     corefreq.enable = true;
     noisetorch = {
       enable = true;
