@@ -376,6 +376,8 @@
     usbutils # lsusb
     wl-clipboard # For WayDroid clipboard sharing
     pulseaudio # pactl for output switching
+    qpwgraph # Qt graph manager for PipeWire
+    easyeffects # Audio effects (e.g. noise cancellation)
     vesktop # Discord
     ((nnn.override { withNerdIcons = true; }).overrideAttrs (finalAttrs: previousAttrs: {
       # "Buffer overflow detected" crash
