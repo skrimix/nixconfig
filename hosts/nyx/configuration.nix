@@ -187,7 +187,7 @@
         wantedBy = [ "default.target" ];
         serviceConfig = {
           Type = "simple";
-          WorkingDirectory = "/mnt/netac/textgen/SillyTavern";
+          WorkingDirectory = "/home/skrimix/.local/share/SillyTavern";
           ExecStart = "/run/current-system/sw/bin/nix-shell -p nodejs_20 --command \"node server.js --disableCsrf\"";
         };
       };

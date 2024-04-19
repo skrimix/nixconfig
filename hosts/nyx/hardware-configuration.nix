@@ -148,13 +148,6 @@ in
       options = ntfsOpts;
     };
 
-  fileSystems."/mnt/netac" =
-    {
-      device = "/dev/disk/by-uuid/01D93E48F1271CA0";
-      fsType = "ntfs3";
-      options = ntfsOpts;
-    };
-
   fileSystems."/mnt/870evo_ntfs" =
     {
       device = "/dev/disk/by-uuid/368E3EE68E3E9E75";
