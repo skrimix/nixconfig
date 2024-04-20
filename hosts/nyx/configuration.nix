@@ -377,7 +377,7 @@
     wl-clipboard # For WayDroid clipboard sharing
     pulseaudio # pactl for output switching
     qpwgraph # Qt graph manager for PipeWire
-    vesktop # Discord
+    #vesktop # Discord
     ((nnn.override { withNerdIcons = true; }).overrideAttrs (finalAttrs: previousAttrs: {
       # "Buffer overflow detected" crash
       hardeningDisable = [ "fortify3" ];
@@ -556,7 +556,7 @@
       enableFishIntegration = false;
       enableBashIntegration = false;
     };
-    steam.enable = true;
+    #steam.enable = true;
     ssh.startAgent = true;
     nix-ld = {
       enable = true;
