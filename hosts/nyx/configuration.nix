@@ -26,7 +26,7 @@
 
   nixpkgs.config.allowUnfree = true;
   system.autoUpgrade = {
-    enable = true;
+    #enable = true;
     randomizedDelaySec = "30min";
     #flake = "path:${inputs.self.outPath}";
     flake = "path:/home/skrimix/.nix";
