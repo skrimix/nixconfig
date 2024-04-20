@@ -388,6 +388,9 @@
     ookla-speedtest
     discover-wrapped # KDE Discover (Flatpak only)
     kdiskmark
+    atuin # shell history
+    dust # better df/du
+    bat # better cat
 
     # Media
     spotify
