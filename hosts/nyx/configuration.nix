@@ -20,7 +20,7 @@
     gc = {
       automatic = true;
       dates = "daily";
-      options = "--delete-older-than 14d";
+      options = "--delete-older-than 7d";
     };
   };
 
@@ -377,7 +377,6 @@
     wl-clipboard # For WayDroid clipboard sharing
     pulseaudio # pactl for output switching
     qpwgraph # Qt graph manager for PipeWire
-    easyeffects # Audio effects (e.g. noise cancellation)
     vesktop # Discord
     ((nnn.override { withNerdIcons = true; }).overrideAttrs (finalAttrs: previousAttrs: {
       # "Buffer overflow detected" crash
@@ -423,7 +422,6 @@
     github-desktop
     burpsuite
     android-studio
-    #(jetbrains.plugins.addPlugins jetbrains.rider [ "github-copilot" ])
     jetbrains.rider
     dotnetCorePackages.sdk_8_0
     imhex
@@ -440,12 +438,10 @@
     monero-gui
     electrum
     electrum-ltc
-    feather
 
     # Gaming
     wineWowPackages.waylandFull
     winetricks
-    #bottles
     mangohud
     protontricks
     lutris
@@ -457,16 +453,13 @@
     lm_sensors
     dmidecode
 
-    # AMD GPU
-    nvtopPackages.amd
-    amdgpu_top
-
     # KDE Info Center deps
     pciutils
     mesa-demos
     clinfo
     vulkan-tools
     wayland-utils
+
   ] ++ (with pkgs.kdePackages; [
     baloo
     ktexteditor

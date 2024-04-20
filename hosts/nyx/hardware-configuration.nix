@@ -56,18 +56,10 @@ in
 
   environment.sessionVariables = { VDPAU_DRIVER = "radeonsi"; };
 
-  # RADV driver seems to be better than AMDVLK
-  # hardware.opengl = {
-  #   extraPackages = with pkgs; [
-  #     amdvlk
-  #   ];
-  #   extraPackages32 = with pkgs; [
-  #     driversi686Linux.amdvlk
-  #   ];
-  # };
-
-  # Default "modesetting" driver is better
-  #services.xserver.videoDrivers = [ "amdgpu" ];
+  environment.systemPackages = with pkgs; [
+    nvtopPackages.amd
+    amdgpu_top
+  ];
 
   # Disable secondary display in SDDM
   services.xserver.displayManager.setupCommands = ''
