@@ -22,6 +22,8 @@
       dates = "daily";
       options = "--delete-older-than 7d";
     };
+
+    daemonCPUSchedPolicy = "idle";
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -291,7 +293,7 @@
 
     earlyoom = {
       enable = true;
-      enableNotifications = false; # waiting for https://github.com/NixOS/nixpkgs/pull/280054
+      enableNotifications = true;
       freeMemThreshold = 5;
       freeSwapThreshold = 5;
       freeMemKillThreshold = 2;
@@ -600,10 +602,6 @@
     appimage = {
       enable = true;
       binfmt = true;
-      # fix warning until 291577 is merged
-      package = pkgs.appimage-run.overrideAttrs (oldAttrs: {
-        meta.mainProgram = "appimage-run";
-      });
     };
   };
 
