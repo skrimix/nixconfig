@@ -291,6 +291,8 @@
       settings.KbdInteractiveAuthentication = false;
     };
 
+    systembus-notify.enable = true; # for earlyoom notifications
+
     earlyoom = {
       enable = true;
       enableNotifications = true;
