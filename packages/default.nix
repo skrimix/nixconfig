@@ -18,9 +18,10 @@
         kwin = super.kwin.overrideAttrs (oldAttrs: {
           patches = oldAttrs.patches ++ [
             # scene/workspacescene: don't check direct scanout candidates
+            # https://invent.kde.org/plasma/kwin/-/merge_requests/5626
             (prev.fetchpatch {
               name = "kwin-direct-scanout-candidates.patch";
-              url = "https://invent.kde.org/plasma/kwin/-/merge_requests/5626.patch";
+              url = "https://invent.kde.org/plasma/kwin/-/commit/fba948b39f6e3b2e70caa1880903f8fb17faf6d9.patch";
               sha256 = "sha256-Z92vqem3T515Dis5ijmS9dYAIhGDhPa7Zg+gS9qAW9I=";
             })
           ];
