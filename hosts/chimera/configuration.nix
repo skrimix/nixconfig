@@ -228,6 +228,7 @@
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGknvPNFi62TmeSZBGklGX+nlM+tSaLJizResYf81Itd skrimix"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEtHROym8sEdSEpZAx3LWHQoG+jLz264XFoE/0fHezZ5 skrimix-nyx"
       ];
       packages = with pkgs; [
       ];
@@ -328,6 +329,8 @@
     # Hardware monitoring
     lm_sensors
     dmidecode
+    powertop
+    intel-gpu-tools
 
     # KDE Info Center deps
     pciutils

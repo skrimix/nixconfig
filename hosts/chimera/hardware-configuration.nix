@@ -57,12 +57,12 @@ in
       enable = true;
       coreOffset = -90;
       gpuOffset = -100;
+      p1.limit = 30;
+      p1.window = 25;
+      p2.limit = 20;
+      p2.window = 120;
     };
   };
-  environment.systemPackages = with pkgs; [
-    undervolt
-  ];
-
   zramSwap.enable = true;
 
   fileSystems."/" =
