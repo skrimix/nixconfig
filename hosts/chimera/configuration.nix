@@ -208,6 +208,8 @@
       freeMemKillThreshold = 2;
       freeSwapKillThreshold = 2;
     };
+
+    fstrim.enable = true;
   };
 
   environment.sessionVariables = {

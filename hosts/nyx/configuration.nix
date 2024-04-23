@@ -301,6 +301,8 @@
       freeMemKillThreshold = 2;
       freeSwapKillThreshold = 2;
     };
+
+    fstrim.enable = true;
   };
 
   environment.sessionVariables = {
@@ -425,6 +427,7 @@
     ]))
     nixpkgs-fmt
     nixd
+    nil
     git
     gh
     github-desktop
