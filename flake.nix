@@ -31,7 +31,7 @@
         modules = [
           ./packages
           ./modules/nix-alien.nix
-          ./modules/kb-switch.nix
+          #./modules/kb-switch.nix
           ./modules/corefreq.nix
           ./hosts/chimera/configuration.nix
         ];
