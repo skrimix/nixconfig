@@ -53,7 +53,15 @@ in
   services = {
     thermald.enable = true;
     power-profiles-daemon.enable = false;
+    undervolt = {
+      enable = true;
+      coreOffset = -90;
+      gpuOffset = -100;
+    };
   };
+  environment.systemPackages = with pkgs; [
+    undervolt
+  ];
 
   zramSwap.enable = true;
 
