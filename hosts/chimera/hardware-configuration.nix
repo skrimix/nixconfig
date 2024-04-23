@@ -26,9 +26,35 @@ in
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "nvme" "uas" "sd_mod" ];
-    initrd.kernelModules = [ ];
+    initrd.kernelModules = [ "i915" ];
     kernelModules = [ "kvm-intel" ];
     extraModulePackages = with config.boot.kernelPackages; [ ];
+    kernelParams = [
+      "i915.enable_fbc=1"
+      "i915.fastboot=1"
+    ];
+  };
+
+  environment.variables = {
+    VDPAU_DRIVER = "va_gl";
+  };
+
+  hardware = {
+    opengl = {
+      extraPackages = with pkgs; [
+        intel-vaapi-driver
+        libvdpau-va-gl
+        intel-media-driver
+      ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [
+        libva
+      ];
+    };
+    system76.power-daemon.enable = true;
+  };
+
+  services = {
+    thermald.enable = true;
   };
 
   zramSwap.enable = true;

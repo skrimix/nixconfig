@@ -84,7 +84,14 @@
 
   networking = {
     hostName = "chimera";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      # randomize MAC address (per connection and boot)
+      ethernet.macAddress = "stable";
+      wifi.macAddress = "stable";
+      settings.connection."connection.stable-id" = ''''${CONNECTION}/''${BOOT}"'';
+    };
+    
     firewall.enable = false;
   };
 
@@ -119,24 +126,7 @@
       DefaultTimeoutStopSec=20s
     '';
 
-    services.nixos-upgrade.environment = lib.mkForce {
-      all_proxy = "";
-      ftp_proxy = "";
-      http_proxy = "";
-      https_proxy = "";
-      rsync_proxy = "";
-    };
-
-    services.docker.environment = lib.mkForce {
-      all_proxy = "";
-      ftp_proxy = "";
-      http_proxy = "";
-      https_proxy = "";
-      rsync_proxy = "";
-    };
-
     user.services = { };
-
     user.timers = { };
   };
 
