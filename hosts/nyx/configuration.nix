@@ -424,6 +424,7 @@
       python-pkgs.requests
     ]))
     nixpkgs-fmt
+    nixd
     git
     gh
     github-desktop

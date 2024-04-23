@@ -27,17 +27,6 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  system.autoUpgrade = {
-    enable = true;
-    randomizedDelaySec = "30min";
-    flake = "path:/home/skrimix/.nix";
-    flags = [
-      "-L" # print build logs
-      "--update-input"
-      "nixpkgs"
-      "--commit-lock-file"
-    ];
-  };
 
   boot = {
     kernelPackages = pkgs.linuxPackagesOverride pkgs.linuxPackages_zen;
@@ -94,7 +83,7 @@
   };
 
   networking = {
-    hostName = "hemera";
+    hostName = "chimera";
     networkmanager.enable = true;
     firewall.enable = false;
   };
