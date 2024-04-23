@@ -97,7 +97,6 @@
 
   hardware = {
     enableRedistributableFirmware = true;
-    opengl.driSupport32Bit = true;
 
     bluetooth = {
       enable = true;

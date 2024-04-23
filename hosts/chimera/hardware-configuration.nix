@@ -46,15 +46,13 @@ in
         libvdpau-va-gl
         intel-media-driver
       ];
-      extraPackages32 = with pkgs.pkgsi686Linux; [
-        libva
-      ];
     };
     system76.power-daemon.enable = true;
   };
 
   services = {
     thermald.enable = true;
+    power-profiles-daemon.enable = false;
   };
 
   zramSwap.enable = true;
