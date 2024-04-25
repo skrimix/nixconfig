@@ -55,8 +55,8 @@ in
     power-profiles-daemon.enable = false;
     undervolt = {
       enable = true;
-      coreOffset = -90;
-      gpuOffset = -100;
+      coreOffset = -91;
+      gpuOffset = -101;
       p2.limit = 30;
       p2.window = 25;
       p1.limit = 20;
